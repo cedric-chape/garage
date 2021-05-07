@@ -9,5 +9,9 @@ public class DAOFactory {
 		return new GaragisteDaoSql();
 	}
 	
+	public static IVehicule createVehiculeDao() {
+		return new VehiculeDaoSql();
+	}
+	
 
 }
