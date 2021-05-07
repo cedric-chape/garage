@@ -3,14 +3,10 @@ package fr.garage.model;
 import java.math.BigDecimal;
 
 public class Operation {
+	
 	private int id;
-	
 	private String libelle;
-	
 	private String description;
-	
-	
-
 	private BigDecimal prixUnitaire;
 	
 	public int getId() {
