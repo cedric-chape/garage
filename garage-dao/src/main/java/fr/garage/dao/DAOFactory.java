@@ -5,5 +5,9 @@ public class DAOFactory {
 		return new OperationDaoSql();
 	}
 	
+	public static IGaragisteDao createGaragisteDao() {
+		return new GaragisteDaoSql();
+	}
+	
 
 }
