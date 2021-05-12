@@ -22,9 +22,9 @@ public class Application {
 	public static void main(String[] args) {
 
 		// findAllOperation();
-		// findAllGaragiste();
+		//findAllGaragiste();
 		// findAllVehicule();
-		// findAllClient();
+		 findAllClient();
 		// findByIdOperation();
 		// findByIdGaragiste();
 		// findByIdVehicule();
@@ -39,7 +39,7 @@ public class Application {
 		// updateVehicule();
 		// updateClient();
 		//deleteOperation();
-		 deleteGaragiste();
+		// deleteGaragiste();
 		// deleteVehicule();
 		//deleteClient();
 

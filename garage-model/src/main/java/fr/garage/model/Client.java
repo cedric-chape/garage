@@ -50,7 +50,7 @@ public class Client {
 	private Fidelite fidelite; 
 	
 	
-	@OneToMany(mappedBy = "id.vehicule")
+	@OneToMany(mappedBy = "client")
 	private List<Vehicule> vehicules;
 	
 	
@@ -95,13 +95,5 @@ public class Client {
 	}
 	public void setFidelite(Fidelite fidelite) {
 		this.fidelite = fidelite;
-	}
-//	public Vehicule getVehicule() {
-//		return vehicule;
-//	}
-//	public void setVehicule(Vehicule vehicule) {
-//		this.vehicule = vehicule;
-//	}
-//	
-	
+	}	
 }

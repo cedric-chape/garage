@@ -7,6 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -39,6 +41,12 @@ public class Vehicule {
 	@Enumerated(EnumType.STRING)
 	private Type type;
 	
+	@ManyToOne
+	@JoinColumn(name = "VEH_CLIENT_ID")
+	private Client client;
+	
+	
+
 	public int getId() {
 		return id;
 	}
@@ -69,4 +77,6 @@ public class Vehicule {
 	public void setType(Type type) {
 		this.type = type;
 	}
+	
+
 }
