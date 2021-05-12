@@ -17,7 +17,8 @@ public class DAOFactory {
 	}
 
 	public static IClientDao createClientDao() {
-		return new ClientDaoSql();
+		// return new ClientDaoSql();
+		return new ClientDaoHibernate();
 	}
 
 }

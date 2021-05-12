@@ -16,14 +16,6 @@ public class ClientService {
 		return this.dao.findAll();
 	}
 	
-	public List<Client> findAllByVehiculeId(int vehiculeId) {
-		return this.dao.findAllByVehiculeId(vehiculeId);
-	}
-	
-	public List<Client> findAllByVehicule(Vehicule vehicule) {
-		return this.dao.findAllByVehicule(vehicule);
-	}
-	
 	public Client findById(int id) {
 		if (id <= 0) {
 			throw new IdMustBePositiveException();

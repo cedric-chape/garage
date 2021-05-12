@@ -1,16 +1,65 @@
 package fr.garage.model;
 
-public class Client {
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+@Entity
+@Table(name="client")
+public class Client {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="CLI_ID")
 	private int id;
+	
+	@Column(name="CLI_NOM", length = 40 , nullable = false)
+	@NotBlank
+	@Size(max=40)
 	private String nom;
+	
+	@Column(name="CLI_PRENOM", length = 40 , nullable = false)
+	@NotBlank
+	@Size(max=40)
 	private String prenom;
+	
+	@Column(name="CLI_RAISON_SOCIALE", length = 40 , nullable = false)
+	@NotBlank
+	@Size(max=40)
 	private String raisonSociale;
+	
+	
+	@Column(name="CLI_TYPE", nullable = false)
+	@NotBlank
+	@Enumerated(EnumType.STRING)
 	private TypeClient typeClient;
-	private Fidelite fidelite;
-	private Vehicule vehicule;
+	
+	@Column(name="CLI_FIDELITE", nullable = false)
+	@NotBlank
+	@Enumerated(EnumType.STRING)
+	private Fidelite fidelite; 
 	
 	
+	@OneToMany(mappedBy = "id.vehicule")
+	private List<Vehicule> vehicules;
+	
+	
+	public List<Vehicule> getVehicules() {
+		return vehicules;
+	}
+	public void setVehicules(List<Vehicule> vehicules) {
+		this.vehicules = vehicules;
+	}
 	public int getId() {
 		return id;
 	}
@@ -47,12 +96,12 @@ public class Client {
 	public void setFidelite(Fidelite fidelite) {
 		this.fidelite = fidelite;
 	}
-	public Vehicule getVehicule() {
-		return vehicule;
-	}
-	public void setVehicule(Vehicule vehicule) {
-		this.vehicule = vehicule;
-	}
-	
+//	public Vehicule getVehicule() {
+//		return vehicule;
+//	}
+//	public void setVehicule(Vehicule vehicule) {
+//		this.vehicule = vehicule;
+//	}
+//	
 	
 }
