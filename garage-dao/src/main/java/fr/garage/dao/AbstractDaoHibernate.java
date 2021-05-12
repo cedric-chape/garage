@@ -24,14 +24,13 @@ public abstract class AbstractDaoHibernate<T> {
 	}
 
 	public List<T> findAll() {
-		return this.em.createQuery("select e from " + this.clz.getSimpleName() + "e", this.clz).getResultList();
+		return this.em.createQuery("select e from " + this.clz.getSimpleName() + " e", this.clz).getResultList();
 	}
 
 	// public abstract Optional<T> findById(int id);
 
 	public Optional<T> findById(int id) {
 		return Optional.ofNullable(this.em.find(this.clz, id));
-
 	}
 
 	public T add(T entity) {
@@ -75,11 +74,12 @@ public abstract class AbstractDaoHibernate<T> {
 		this.em.getTransaction().begin();
 
 		try {
-			this.em.remove(this.findById(id));
+			this.em.remove(this.em.find(this.clz, id));
 
 			// Commit de la transaction
 			this.em.getTransaction().commit();
 		} catch (Exception ex) {
+			ex.printStackTrace();
 			this.em.getTransaction().rollback();
 		}
 		return true;

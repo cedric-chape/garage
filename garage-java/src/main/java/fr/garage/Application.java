@@ -33,15 +33,15 @@ public class Application {
 		// addOperation();
 		// addGaragiste();
 		// addVehicule();
-		//addClient();
+		// addClient();
 		// updateOperation();
 		// updateGaragiste();
 		// updateVehicule();
-		//updateClient();
-		// deleteOperation();
-		// deleteGaragiste();
+		// updateClient();
+		//deleteOperation();
+		 deleteGaragiste();
 		// deleteVehicule();
-		deleteClient();
+		//deleteClient();
 
 	}
 
@@ -99,6 +99,7 @@ public class Application {
 		// test findById(int id)
 		try {
 			Operation operation = service.findById(10);
+			System.out.println(operation.getId() + " " + operation.getLibelle());
 		}
 
 		catch (IdMustBePositiveException idex) {
@@ -191,8 +192,8 @@ public class Application {
 		OperationService service = new OperationService();
 
 		Operation operation = new Operation();
-		operation.setLibelle("Test ajout libellé opération");
-		operation.setDescription("Test ajout description opération");
+		operation.setLibelle("Test ajout 2 libellé opération");
+		operation.setDescription("Test ajout 2 description opération");
 		operation.setPrixUnitaire(new BigDecimal(500));
 
 		service.add(operation);
@@ -242,7 +243,7 @@ public class Application {
 		OperationService service = new OperationService();
 
 		// On récupère l'opération
-		Operation operation = service.findById(16);
+		Operation operation = service.findById(17);
 
 		// On modifie le libellé
 		operation.setLibelle("Réédition du libellé opération");
@@ -257,7 +258,7 @@ public class Application {
 		GaragisteService service = new GaragisteService();
 
 		// On récupère l'opération
-		Garagiste garagiste = service.findById(5);
+		Garagiste garagiste = service.findById(6);
 
 		// On modifie le libellé
 		garagiste.setNom("Réédition du nom garagiste");
@@ -288,7 +289,7 @@ public class Application {
 		OperationService service = new OperationService();
 
 		try {
-			Operation operation = service.findById(16);
+			Operation operation = service.findById(17);
 			service.deleteById(operation.getId());
 
 			System.out.println("Supprimé !");
@@ -307,7 +308,7 @@ public class Application {
 		GaragisteService service = new GaragisteService();
 
 		try {
-			Garagiste garagiste = service.findById(5);
+			Garagiste garagiste = service.findById(6);
 			service.deleteById(garagiste.getId());
 
 			System.out.println("Supprimé !");
