@@ -21,4 +21,12 @@ public class DAOFactory {
 		return new ClientDaoHibernate();
 	}
 
+	public static ICommandeDao createCommandeDao() {
+		return new CommandeDaoHibernate();
+	}
+
+	public static ICommandeDetailDao createCommandeDetail() {
+		return new CommandeDetailDaoHibernate();
+	}
+
 }

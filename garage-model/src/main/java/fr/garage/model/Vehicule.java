@@ -45,8 +45,6 @@ public class Vehicule {
 	@JoinColumn(name = "VEH_CLIENT_ID")
 	private Client client;
 	
-	
-
 	public int getId() {
 		return id;
 	}
@@ -76,6 +74,12 @@ public class Vehicule {
 	}
 	public void setType(Type type) {
 		this.type = type;
+	}
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
 	}
 	
 

@@ -1,6 +1,7 @@
 package fr.garage.model;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -32,6 +34,9 @@ public class Operation {
 	
 	@Column(name = "OPE_PRIX_UNITAIRE", precision = 10, scale = 2)
 	private BigDecimal prixUnitaire;
+	
+	@OneToMany(mappedBy = "id.operation")
+	private List<CommandeDetail> details;
 	
 	public int getId() {
 		return id;
@@ -64,4 +69,14 @@ public class Operation {
 	public void setPrixUnitaire(BigDecimal prixUnitaire) {
 		this.prixUnitaire = prixUnitaire;
 	}
+
+	public List<CommandeDetail> getDetails() {
+		return details;
+	}
+
+	public void setDetails(List<CommandeDetail> details) {
+		this.details = details;
+	}
+	
+	
 }

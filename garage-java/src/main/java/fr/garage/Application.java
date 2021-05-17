@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 
 import fr.garage.exception.IdMustBePositiveException;
 import fr.garage.model.Client;
+import fr.garage.model.Commande;
 import fr.garage.model.Fidelite;
 import fr.garage.model.Garagiste;
 import fr.garage.model.Operation;
@@ -13,6 +14,7 @@ import fr.garage.model.Type;
 import fr.garage.model.TypeClient;
 import fr.garage.model.Vehicule;
 import fr.garage.service.ClientService;
+import fr.garage.service.CommandeService;
 import fr.garage.service.GaragisteService;
 import fr.garage.service.OperationService;
 import fr.garage.service.VehiculeService;
@@ -22,9 +24,10 @@ public class Application {
 	public static void main(String[] args) {
 
 		// findAllOperation();
-		//findAllGaragiste();
+		// findAllGaragiste();
 		// findAllVehicule();
-		 findAllClient();
+		// findAllClient();
+		findAllCommande();
 		// findByIdOperation();
 		// findByIdGaragiste();
 		// findByIdVehicule();
@@ -38,10 +41,10 @@ public class Application {
 		// updateGaragiste();
 		// updateVehicule();
 		// updateClient();
-		//deleteOperation();
+		// deleteOperation();
 		// deleteGaragiste();
 		// deleteVehicule();
-		//deleteClient();
+		// deleteClient();
 
 	}
 
@@ -89,7 +92,16 @@ public class Application {
 
 		for (Client c : clients) {
 			System.out.println(c.getId() + " - " + c.getNom() + " - " + c.getPrenom() + " - " + c.getRaisonSociale()
-					+ " - " + c.getTypeClient() + " - " + c.getFidelite() + " - ");
+					+ " - " + c.getTypeClient() + " - " + c.getFidelite() + " - " + c.getVehicules());
+		}
+	}
+
+	public static void findAllCommande() {
+		CommandeService service = new CommandeService();
+		List<Commande> commandes = service.findAll();
+
+		for (Commande c : commandes) {
+			System.out.println(c.getId() + " - " + c.getClient().getNom());
 		}
 	}
 
@@ -234,8 +246,8 @@ public class Application {
 		monClient.setPrenom("Robert");
 		monClient.setTypeClient(TypeClient.PARTICULIER);
 		monClient.setFidelite(Fidelite.CLASSIQUE);
-		
-		//monClient.setVehicule(null);
+
+		// monClient.setVehicule(null);
 		service.add(monClient);
 	}
 
@@ -271,13 +283,20 @@ public class Application {
 
 	public static void updateVehicule() {
 		VehiculeService srvVehicule = new VehiculeService();
-		Vehicule vehicule = srvVehicule.findById(14);
-		vehicule.setNom("VEHICULE UPDATE JAVA");
-		Type type = Type.valueOf("CAMION");
-		vehicule.setType(type);
-		srvVehicule.update(vehicule);
+		ClientService srvClient = new ClientService();
+
+		for (int i = 1; i < 11; i++) {
+			Client client = srvClient.findById(i);
+			Vehicule vehicule = srvVehicule.findById(i);
+			vehicule.setClient(client);
+			srvVehicule.update(vehicule);
+		}
+//		Client client = srvClient.findById(1);
+//		Vehicule vehicule = srvVehicule.findById(1);
+//		vehicule.setClient(client);
+//		srvVehicule.update(vehicule);
 	}
-	
+
 	public static void updateClient() {
 		ClientService service = new ClientService();
 		Client client = service.findById(11);
@@ -337,7 +356,7 @@ public class Application {
 		}
 		srvVehicule.deleteById(14);
 	}
-	
+
 	public static void deleteClient() {
 		ClientService service = new ClientService();
 
