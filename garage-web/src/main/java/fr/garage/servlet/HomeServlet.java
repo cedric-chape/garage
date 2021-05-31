@@ -15,6 +15,9 @@ public class HomeServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		GaragisteService serviceGar = new GaragisteService();
+		
+		req.setAttribute("garagiste", serviceGar.findById(1));
 		
 		this
 			.getServletContext()

@@ -6,7 +6,6 @@
 		<title>Accueil</title>
 	</head>
 	<body>
-		<h1>Hello world!</h1>
-		
+		<h1>Hello ${ garagiste.prenom } ${ garagiste.nom }</h1>
 	</body>
 </html>
