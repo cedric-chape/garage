@@ -37,7 +37,6 @@ public class Vehicule {
 	private String immatriculation;
 	
 	@Column(name="VEH_TYPE", nullable = false)
-	@NotBlank
 	@Enumerated(EnumType.STRING)
 	private Type type;
 	

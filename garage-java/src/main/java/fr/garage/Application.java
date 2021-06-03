@@ -1,19 +1,25 @@
 package fr.garage;
 
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.NoSuchElementException;
+
+import com.google.common.hash.Hashing;
 
 import fr.garage.exception.IdMustBePositiveException;
 import fr.garage.model.Client;
 import fr.garage.model.Commande;
+import fr.garage.model.CommandeDetail;
 import fr.garage.model.Fidelite;
 import fr.garage.model.Garagiste;
 import fr.garage.model.Operation;
 import fr.garage.model.Type;
 import fr.garage.model.TypeClient;
+import fr.garage.model.TypeRole;
 import fr.garage.model.Vehicule;
 import fr.garage.service.ClientService;
+import fr.garage.service.CommandeDetailService;
 import fr.garage.service.CommandeService;
 import fr.garage.service.GaragisteService;
 import fr.garage.service.OperationService;
@@ -22,28 +28,29 @@ import fr.garage.service.VehiculeService;
 public class Application {
 
 	public static void main(String[] args) {
-
+		
 		// findAllOperation();
 		// findAllGaragiste();
 		// findAllVehicule();
 		// findAllClient();
-		findAllCommande();
+		//findAllCommande();
+		//findAllCommandeDetail();
 		// findByIdOperation();
 		// findByIdGaragiste();
 		// findByIdVehicule();
 		// findByIdClient();
 		// findByImmatriculationVehicule();
 		// addOperation();
-		// addGaragiste();
-		// addVehicule();
-		// addClient();
+		 //addGaragiste();
+		 //addVehicule();
+		 //addClient();
 		// updateOperation();
 		// updateGaragiste();
 		// updateVehicule();
 		// updateClient();
 		// deleteOperation();
 		// deleteGaragiste();
-		// deleteVehicule();
+		 deleteVehicule();
 		// deleteClient();
 
 	}
@@ -60,6 +67,16 @@ public class Application {
 		}
 
 		System.out.println("----------------------");
+	}
+	
+	public static void findAllCommandeDetail() {
+		CommandeDetailService service = new CommandeDetailService();
+		
+		List<CommandeDetail> details = service.findAll();
+		
+		for (CommandeDetail cd : details) {
+			System.out.println(cd.getId());
+		}
 	}
 
 	public static void findAllGaragiste() {
@@ -216,25 +233,41 @@ public class Application {
 	public static void addGaragiste() {
 		// test addOperation
 		GaragisteService service = new GaragisteService();
+		
+		String password = "1234";
+		String passwordSha256 = Hashing.sha256()
+				  .hashString(password, StandardCharsets.UTF_8)
+				  .toString();
 
 		Garagiste garagiste = new Garagiste();
-		garagiste.setNom("Test ajout nom garagiste");
-		garagiste.setPrenom("Test ajout prenom garagiste");
+		
+
+		
+		garagiste.setNom("Chapé");
+		garagiste.setPrenom("Cédric");
+		garagiste.setEmail("cedric-chape@live.fr");
+		garagiste.setPassword(passwordSha256);
+		garagiste.setRole(TypeRole.valueOf("ADMIN"));
 
 		service.add(garagiste);
+		
 
-		System.out.println("Ajouté !");
+
+		//System.out.println("Ajouté !");
 	}
 
 	public static void addVehicule() {
 		VehiculeService service = new VehiculeService();
 
+		Client client = new Client();
+		client.setId(1);
 		Vehicule monVehicule = new Vehicule();
 		monVehicule.setNom("308");
 		monVehicule.setMarque("Peugeot");
 		monVehicule.setImmatriculation("DF8645FD");
 		Type type = Type.valueOf("VOITURE");
 		monVehicule.setType(type);
+		monVehicule.setClient(client);
 		service.add(monVehicule);
 	}
 
@@ -346,15 +379,15 @@ public class Application {
 		VehiculeService srvVehicule = new VehiculeService();
 
 		try {
-			Vehicule vehicule = srvVehicule.findById(14);
+			Vehicule vehicule = srvVehicule.findById(3);
 			srvVehicule.deleteById(vehicule.getId());
 		} catch (IdMustBePositiveException idex) {
 			System.out.println("L'id n'est pas strictement < 0 ...");
-			;
+			
 		} catch (NoSuchElementException nex) {
 			System.out.println("Ce véhicule n'existe pas dans la base de données...");
 		}
-		srvVehicule.deleteById(14);
+		//srvVehicule.deleteById(2);
 	}
 
 	public static void deleteClient() {

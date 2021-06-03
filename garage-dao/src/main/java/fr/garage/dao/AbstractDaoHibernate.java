@@ -16,11 +16,10 @@ public abstract class AbstractDaoHibernate<T> {
 	public AbstractDaoHibernate(Class<T> clz) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-		}
-		catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			System.out.println("Chargement du pilote impossible...");
 		}
-		
+
 		this.clz = clz;
 
 		if (emf == null) {
@@ -52,7 +51,7 @@ public abstract class AbstractDaoHibernate<T> {
 			this.em.getTransaction().commit();
 			return entity;
 		} catch (Exception ex) {
-			// ex.printStackTrace();
+			ex.printStackTrace();
 			this.em.getTransaction().rollback();
 		}
 
@@ -81,12 +80,15 @@ public abstract class AbstractDaoHibernate<T> {
 		this.em.getTransaction().begin();
 
 		try {
-			this.em.remove(this.em.find(this.clz, id));
+			this.em.remove(
+				this.findById(id).get()
+			);
 
 			// Commit de la transaction
 			this.em.getTransaction().commit();
+			
+			return true;
 		} catch (Exception ex) {
-			ex.printStackTrace();
 			this.em.getTransaction().rollback();
 		}
 		return true;

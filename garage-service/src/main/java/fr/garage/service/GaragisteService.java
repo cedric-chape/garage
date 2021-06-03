@@ -38,5 +38,9 @@ public class GaragisteService {
 		}
 		this.dao.deleteById(id);
 	}
+	
+	public Garagiste findByEmail(String email) {
+		return this.dao.findByEmail(email).orElseThrow();
+	}
 
 }

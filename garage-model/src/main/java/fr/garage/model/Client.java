@@ -28,24 +28,20 @@ public class Client {
 	@Size(max=40)
 	private String nom;
 	
-	@Column(name="CLI_PRENOM", length = 40 , nullable = false)
-	@NotBlank
+	@Column(name="CLI_PRENOM", length = 40)
 	@Size(max=40)
 	private String prenom;
 	
-	@Column(name="CLI_RAISON_SOCIALE", length = 40 , nullable = false)
-	@NotBlank
+	@Column(name="CLI_RAISON_SOCIALE", length = 40)
 	@Size(max=40)
 	private String raisonSociale;
 	
 	
 	@Column(name="CLI_TYPE", nullable = false)
-	@NotBlank
 	@Enumerated(EnumType.STRING)
 	private TypeClient typeClient;
 	
 	@Column(name="CLI_FIDELITE", nullable = false)
-	@NotBlank
 	@Enumerated(EnumType.STRING)
 	private Fidelite fidelite; 
 	

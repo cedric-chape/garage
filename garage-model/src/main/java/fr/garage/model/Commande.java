@@ -32,7 +32,7 @@ public class Commande {
 	@Enumerated(EnumType.STRING)
 	private EtatCommande etatCommande = EtatCommande.NONCOMMENCEE;
 
-	@Column(name = "CMD_TOTAL", precision = 10, scale = 2, nullable = false)
+	@Column(name = "CMD_PRIX_TOTAL", precision = 10, scale = 2, nullable = false)
 	private BigDecimal prixTotal;
 	
 	@ManyToOne

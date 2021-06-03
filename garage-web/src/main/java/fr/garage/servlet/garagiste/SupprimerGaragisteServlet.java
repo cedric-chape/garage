@@ -1,4 +1,4 @@
-package fr.garage.servlet;
+package fr.garage.servlet.garagiste;
 
 import java.io.IOException;
 
@@ -10,22 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.garage.service.GaragisteService;
 
-@WebServlet("/home")
-public class HomeServlet extends HttpServlet{
+@WebServlet("/supprimer-garagiste")
+public class SupprimerGaragisteServlet extends HttpServlet {
 	
-	public HomeServlet() {
-		System.out.println("CREATION");
-	}
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		int garagisteId = Integer.parseInt(req.getParameter("id"));
+		
 		GaragisteService serviceGar = new GaragisteService();
+		serviceGar.deleteById(garagisteId);
 		
-		req.setAttribute("garagiste", serviceGar.findById(3));
-		
-		this
-			.getServletContext()
-			.getRequestDispatcher("/WEB-INF/home.jsp")
-			.forward(req, resp);
+		req.getSession().setAttribute("garagisteSupprime", true);
+		resp.sendRedirect("liste-garagiste");
 	}
+
 }

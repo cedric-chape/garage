@@ -107,4 +107,10 @@ public class GaragisteDaoSql extends AbstractDaoSql implements IGaragisteDao{
 		}
 	}
 
+	@Override
+	public Optional<Garagiste> findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
