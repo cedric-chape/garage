@@ -12,9 +12,8 @@ import fr.garage.model.Client;
 
 @Service
 public class ClientService {
-
 	@Autowired
-	private IClientDao dao;
+	private IClientDao dao ;
 
 	public List<Client> findAll() {
 		return this.dao.findAll();
