@@ -12,6 +12,7 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -24,7 +25,7 @@ public class Operation {
 	private int id;
 	
 	@Column(name = "OPE_LIBELLE", length = 100, nullable = false)
-	@NotBlank
+	@NotBlank(message = "Saisir le libellé opération")
 	@Size(max = 100)
 	private String libelle;
 	
@@ -33,6 +34,7 @@ public class Operation {
 	private String description;
 	
 	@Column(name = "OPE_PRIX_UNITAIRE", precision = 10, scale = 2)
+	@NotNull(message = "Saisir le prix unitaire")
 	private BigDecimal prixUnitaire;
 	
 	@OneToMany(mappedBy = "id.operation")

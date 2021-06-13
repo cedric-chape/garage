@@ -23,12 +23,12 @@ public class Vehicule {
 	private int id;
 	
 	@Column(name="VEH_NOM", length = 40, nullable = false)
-	@NotBlank
+	@NotBlank(message = "Saisir le modèle du véhicule")
 	@Size(max = 40)
 	private String nom;
 	
 	@Column(name="VEH_MARQUE", length = 40, nullable = false)
-	@NotBlank
+	@NotBlank(message = "Saisir la marque du véhicule")
 	@Size(max = 40)
 	private String marque;
 	

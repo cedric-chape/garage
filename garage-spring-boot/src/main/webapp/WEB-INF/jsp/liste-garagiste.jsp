@@ -7,23 +7,23 @@
 	
 	<jsp:body>
 		<br/>
-		<c:if test="${ garagisteAjout == true}">
+		<c:if test="${ param.garagisteAjoute == true }">
 			<div class="alert alert-success" role="alert">
 						Garagiste ajouté !
 			</div>
 		</c:if>
-		<c:if test="${ garagisteModifie == true }">
+		<c:if test="${ param.garagisteModifie == true }">
 			<div class="alert alert-success" role="alert">
 						Garagiste modifié !
 			</div>
 		</c:if>
-		<c:if test="${ garagisteSupprime == true }">
+		<c:if test="${ param.garagisteSupprime == true }">
 			<div class="alert alert-success" role="alert">
 						Garagiste supprimé !
 			</div>
 		</c:if>
 		<br/>
-		<a href="ajouter-garagiste" class="btn btn-success">Ajouter</a> 
+		<a href="ajouter" class="btn btn-success">Ajouter</a> 
 		<table class="table table-striped">
 					<thead>
 			    <tr>
@@ -38,7 +38,7 @@
 			<tbody>
 				<c:forEach var="garagiste" items="${ garagistes }">
 			    	<tr>
-						<th scope="row">${ garagiste.getId() }</th>
+						<td>${ garagiste.getId() }</td>
 						<td>${ garagiste.nom }</td>
 						<td>${ garagiste.prenom }</td>
 						<td>${ garagiste.email }</td>
@@ -51,8 +51,8 @@
 							</c:if>
 						</td>
 			      		<td>
-			      			<a href="modifier-garagiste?id=${ garagiste.id }" class="btn btn-warning">Modifier</a> 
-			      			<a href="supprimer-garagiste?id=${ garagiste.id }" class="btn btn-danger">Supprimer</a>
+			      			<a href="modifier?id=${ garagiste.id }" class="btn btn-warning">Modifier</a> 
+			      			<a href="supprimer?id=${ garagiste.id }" class="btn btn-danger">Supprimer</a>
 			      		</td>
 			    	</tr>
 			    </c:forEach>

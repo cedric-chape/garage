@@ -15,13 +15,18 @@
 				Le véhicule ne peut être supprimé car il est rattaché à une commande !
 			</div>
 		</c:if>
+				<c:if test="${ param.vehiculeSupprime == true }">
+			<div class="alert alert-success" role="alert">
+				Le véhicule a bien été supprimé !
+			</div>
+		</c:if>
 		<c:if test="${ param.vehiculeModifie == true }">
 			<div class="alert alert-success" role="alert">
 				Le véhicule a bien été modifié !
 			</div>
 		</c:if>
 		
-		<a href="ajouter-vehicule" class="btn btn-success">Ajouter un véhicule</a>
+		<a href="ajouter" class="btn btn-success">Ajouter un véhicule</a>
 		
 		<table class="table table-striped">
 			<thead>
@@ -51,8 +56,8 @@
 						<td>${ vehicule.nom }</td>
 						<td>${ vehicule.type }</td>
 						<td>${ vehicule.immatriculation }</td>
-						<td><a href="modifier-vehicule?id=${ vehicule.id }" class="btn btn-warning">Modifier</a></td>
-						<td><a href="supprimer-vehicule?id=${ vehicule.id }" class="btn btn-danger">Supprimer</a></td>
+						<td><a href="modifier?id=${ vehicule.id }" class="btn btn-warning">Modifier</a></td>
+						<td><a href="supprimer?id=${ vehicule.id }" class="btn btn-danger">Supprimer</a></td>
 						<td><c:out value="${ vehicule.client.nom }" /></td>
 						<td><c:out value="${ vehicule.client.prenom }" /></td>
 						<td><c:out value="${ vehicule.client.raisonSociale }" /></td>

@@ -1,29 +1,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <t:layout>
 	<jsp:attribute name="title">
-		<c:if test="${ garagiste == null }">Ajouter un garagiste</c:if>
-		<c:if test="${ garagiste != null }">Modifier un garagiste</c:if>
+		<c:if test="${ garagiste == null || garagiste.id == 0 }">Ajouter un garagiste</c:if>
+		<c:if test="${ garagiste != null && garagiste.id != 0 }">Modifier un garagiste</c:if>
 	</jsp:attribute>
 	
 	<jsp:body>
-	
-		<c:if test="${ not empty errors }">
-			<div class="alert alert-warning" role="alert">
-  				<ul>
-					<c:forEach var="error" items="${ errors }">
-						<li><c:out value="${ error }"/></li>
-					</c:forEach>
-				</ul>
-			</div>
-			
-		</c:if>
-		<form method="POST">
+		<form:form method="POST" modelAttribute="garagiste">
+			<form:errors path="*" cssClass="alert alert-danger" element="div" />
 			<div class="form-group">
 				<label>Nom <span style="color:red;">*</span></label>
 				<input type="text" name="nom" value="${ garagiste.nom }" class="form-control"/>
-			</div class="form-group">
+			</div>
 			<div class="form-group">
 				<label>Prénom</label>
 				<input type="text" name="prenom" value="${ garagiste.prenom }" class="form-control"/>
@@ -35,10 +26,6 @@
 			<div class="form-group">
 				<label>Mot de passe <span style="color:red;">*</span></label>
 				<input type="password" name="password" class="form-control"/>
-			</div>
-			<div class="form-group">
-				<label>Confirmation Mot de passe <span style="color:red;">*</span></label>
-				<input type="password" name="confirmPassword" class="form-control"/>
 			</div>
 			<div class="form-group">
 				<label>Rôle <span style="color:red;">*</span></label>
@@ -54,14 +41,14 @@
 				</select>
 			</div>
 			
-			<c:if test="${ garagiste == null }">
+			<c:if test="${ garagiste == null || garagiste.id == 0 }">
 				<input type="submit" class="btn btn-success" value="Ajouter"/>
 			</c:if>
-			<c:if test="${ garagiste != null }">
+			<c:if test="${ garagiste != null && garagiste.id != 0 }">
 				<input type="submit" class="btn btn-warning" value="Modifier"/>
 			</c:if>
-			<a href="liste-garagiste" class="btn btn-outline-primary">Retour</a>
-		</form>
+			<a href="liste" class="btn btn-outline-primary">Retour</a>
+		</form:form>
 		
 	</jsp:body>
 </t:layout>
