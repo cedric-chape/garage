@@ -36,7 +36,7 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<label>Fidélité</label>
+				<label>fidelite</label>
 				<select class="form-control" name="fidelite">
 					<c:if test="${ client.fidelite == 'CLASSIQUE' || client.fidelite == null }">
 						<option value="CLASSIQUE" selected>Classique</option>
