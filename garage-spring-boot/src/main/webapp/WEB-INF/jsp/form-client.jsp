@@ -24,7 +24,7 @@
 			</div>
 			<div class="form-group">
 				<label>Type</label>
-				<select class="form-control" name="type">
+				<select class="form-control" name="typeClient">
 					<c:if test="${ client.typeClient == 'PARTICULIER' || client.typeClient == null }">
 						<option value="PARTICULIER" selected>Particulier</option>
 						<option value="PROFESSIONNEL">Professionnel</option>

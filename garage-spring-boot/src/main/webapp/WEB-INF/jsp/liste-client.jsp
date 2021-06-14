@@ -5,7 +5,7 @@
 	<jsp:attribute name="title">Liste des Clients</jsp:attribute>
 	
 	<jsp:body>
-		<c:if test="${ param.clientAjout == true }">
+		<c:if test="${ param.clientAjoute == true }">
 			<div class="alert alert-success" role="alert">
 				Le client a bien été ajouté !
 			</div>
@@ -17,7 +17,13 @@
 			</div>
 		</c:if>
 		
-		<a href="ajouter-client" class="btn btn-success">Ajouter un client</a>
+		<c:if test="${ param.clientSupprime == true }">
+			<div class="alert alert-success" role="alert">
+				Le client a bien été supprimé !
+			</div>
+		</c:if>
+		
+		<a href="ajouter" class="btn btn-success">Ajouter un client</a>
 		
 		<table class="table table-striped">
 			<thead>
@@ -45,8 +51,8 @@
 <%-- 						<td> <ahref="client-vehicules?id=${ client.id }" class="btn btn-warning">Voir</a> </td> --%>
 						<td>
 						
-							<a href="modifier-client?id=${ client.id }" class="btn btn-warning">Modifier</a>
-							<a href="supprimer-client?id=${ client.id }" class="btn btn-danger">Supprimer</a>
+							<a href="modifier?id=${ client.id }" class="btn btn-warning">Modifier</a>
+							<a href="supprimer?id=${ client.id }" class="btn btn-danger">Supprimer</a>
 						</td>
 					</tr>
 				</c:forEach>

@@ -24,13 +24,13 @@ public class ClientController {
 	@Autowired
 	private ClientService srvClient;
 	
-	@GetMapping("liste")
+	@GetMapping("/liste")
 	public String findAll(Model model) {
 		List<Client> mesClients = this.srvClient.findAll();
 		
 		model.addAttribute("clients", mesClients);
 		
-		return "liste-clients";
+		return "liste-client";
 	}
 	
 	@GetMapping("/ajouter")
