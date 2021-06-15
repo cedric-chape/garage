@@ -1,11 +1,8 @@
 package fr.garage.model;
 
-import java.nio.charset.StandardCharsets;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,9 +10,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
-import com.google.common.hash.Hashing;
-
 
 @Entity
 @Table(name = "garagiste")
@@ -45,9 +39,8 @@ public class Garagiste {
 	@NotBlank(message = "Le champ Mot de passe ne doit pas être vide")
 	private String password;
 	
-	@Column(name = "GAR_ROLE", nullable = false)
-	@Enumerated(EnumType.STRING)
-	private TypeRole role = TypeRole.USER;
+	@Column(name = "GAR_ADMIN", nullable = false)
+	private boolean admin;
 
 	public int getId() {
 		return id;
@@ -88,13 +81,13 @@ public class Garagiste {
 	public void setPassword(String password) {		
 		this.password = password;
 	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
 	
-	public TypeRole getRole() {
-		return role;
-	}
-
-	public void setRole(TypeRole role) {
-		this.role = role;
-	}
-
 }

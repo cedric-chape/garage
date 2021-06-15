@@ -20,15 +20,16 @@
 							<img class="img-fluid" src="assets/img/igc.png" alt="IGC" />
 						</div>
 						<div class="card-body text-center form-parent">
-							<c:if test="${ errorLogin == true}">
+							<c:if test="${ erreur == true}">
 								<p style="color:red;">
-									Votre email et/ou votre mot de passe sont erronés
+									Votre email et/ou votre mot de passe erroné(s)
 								</p>
 							</c:if>
-				    		<form class="form-login" method="POST">
+				    		<form class="form-login" method="POST" action="perform_login">
+				        		<input type="hidden" name="${ _csrf.parameterName }" value="${ _csrf.token }" />
 				        		<div class="form-group">
 				            		<label>Email</label>
-				            		<input type="email" name="email" class="form-control"/>
+				            		<input type="text" name="username" class="form-control"/>
 				        		</div>
 				        		<div class="form-group">
 				            		<label>Password</label>

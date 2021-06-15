@@ -29,14 +29,14 @@
 			</div>
 			<div class="form-group">
 				<label>Rôle <span style="color:red;">*</span></label>
-				<select name="role" class="form-control">
-					<c:if test="${ garagiste.role == 'ADMIN' }">
-						<option value="ADMIN" selected>Administrateur</option>
-						<option value="USER">Utilisateur</option>
+				<select name="admin" class="form-control">
+					<c:if test="${ garagiste.admin == true }">
+						<option value="1" selected>Administrateur</option>
+						<option value="0">Utilisateur</option>
 					</c:if>
-					<c:if test="${ garagiste.role == 'USER' || garagiste.role == null}">
-						<option value="ADMIN">Administrateur</option>
-						<option value="USER" selected>Utilisateur</option>
+					<c:if test="${ garagiste.admin == false || garagiste.admin == null}">
+						<option value="1">Administrateur</option>
+						<option value="0" selected>Utilisateur</option>
 					</c:if>
 				</select>
 			</div>

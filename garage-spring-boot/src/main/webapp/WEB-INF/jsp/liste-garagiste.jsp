@@ -43,10 +43,10 @@
 						<td>${ garagiste.prenom }</td>
 						<td>${ garagiste.email }</td>
 						<td>
-							<c:if test="${ garagiste.role == 'ADMIN'}">
+							<c:if test="${ garagiste.admin == true}">
 								Administrateur
 							</c:if>
-							<c:if test="${ garagiste.role == 'USER'}">
+							<c:if test="${ garagiste.admin == false}">
 								Utilisateur
 							</c:if>
 						</td>
