@@ -17,7 +17,7 @@
 					<div class="card">
 						<div class="card-header">
 							<h2 class="text-center">International Garage Company</h2>
-							<img class="img-fluid" src="assets/img/igc.png" alt="IGC" />
+							<img class="img-fluid" src="/assets/img/igc.png" alt="IGC" />
 						</div>
 						<div class="card-body text-center form-parent">
 							<c:if test="${ erreur == true}">
