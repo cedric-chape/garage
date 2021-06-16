@@ -22,8 +22,13 @@
 						Garagiste supprimé !
 			</div>
 		</c:if>
+				<c:if test="${ param.garagisteSupprime == false }">
+			<div class="alert alert-warning" role="alert">
+						Vous ne pouvez pas vous supprimer !
+			</div>
+		</c:if>
 		<br/>
-		<a href="ajouter" class="btn btn-success">Ajouter</a> 
+		<a href="garagiste/ajouter" class="btn btn-success">Ajouter</a> 
 		<table class="table table-striped">
 					<thead>
 			    <tr>
@@ -51,8 +56,11 @@
 							</c:if>
 						</td>
 			      		<td>
-			      			<a href="modifier?id=${ garagiste.id }" class="btn btn-warning">Modifier</a> 
-			      			<a href="supprimer?id=${ garagiste.id }" class="btn btn-danger">Supprimer</a>
+			      			<a href="garagiste/modifier?id=${ garagiste.id }" class="btn btn-warning">Modifier</a> 
+			      			
+			      			<c:if test="${ garagiste.email != userPrincipal }">
+			      				<a href="garagiste/supprimer?id=${ garagiste.id }" class="btn btn-danger">Supprimer</a>
+			      			</c:if>
 			      		</td>
 			    	</tr>
 			    </c:forEach>

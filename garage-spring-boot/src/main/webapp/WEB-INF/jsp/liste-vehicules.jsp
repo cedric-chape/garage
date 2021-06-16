@@ -26,7 +26,7 @@
 			</div>
 		</c:if>
 		
-		<a href="ajouter" class="btn btn-success">Ajouter un véhicule</a>
+		<a href="vehicule/ajouter" class="btn btn-success">Ajouter un véhicule</a>
 		
 		<table class="table table-striped">
 			<thead>
@@ -56,8 +56,8 @@
 						<td>${ vehicule.nom }</td>
 						<td>${ vehicule.type }</td>
 						<td>${ vehicule.immatriculation }</td>
-						<td><a href="modifier?id=${ vehicule.id }" class="btn btn-warning">Modifier</a></td>
-						<td><a href="supprimer?id=${ vehicule.id }" class="btn btn-danger">Supprimer</a></td>
+						<td><a href="vehicule/modifier?id=${ vehicule.id }" class="btn btn-warning">Modifier</a></td>
+						<td><a href="vehicule/supprimer?id=${ vehicule.id }" class="btn btn-danger">Supprimer</a></td>
 						<td><c:out value="${ vehicule.client.nom }" /></td>
 						<td><c:out value="${ vehicule.client.prenom }" /></td>
 						<td><c:out value="${ vehicule.client.raisonSociale }" /></td>

@@ -23,7 +23,7 @@
 			</div>
 		</c:if>
 		<br/>
-		<a href="ajouter" class="btn btn-success">Ajouter</a> 
+		<a href="operation/ajouter" class="btn btn-success">Ajouter</a> 
 		<table class="table table-striped">
 					<thead>
 			    <tr>
@@ -40,8 +40,8 @@
 						<td>${ operation.libelle }</td>
 						<td>${ operation.prixUnitaire }</td>
 			      		<td>
-			      			<a href="modifier?id=${ operation.id }" class="btn btn-warning">Modifier</a> 
-			      			<a href="supprimer?id=${ operation.id }" class="btn btn-danger">Supprimer</a>
+			      			<a href="operation/modifier?id=${ operation.id }" class="btn btn-warning">Modifier</a> 
+			      			<a href="operation/supprimer?id=${ operation.id }" class="btn btn-danger">Supprimer</a>
 			      		</td>
 			    	</tr>
 			    </c:forEach>

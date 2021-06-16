@@ -3,6 +3,9 @@ package fr.garage.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,11 +23,20 @@ public class GaragisteController {
 
 	@Autowired
 	private GaragisteService srvGaragiste;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
+	
+	
 
 	@GetMapping("/liste")
 	public String findAll(Model model) {
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
 		model.addAttribute("garagistes", this.srvGaragiste.findAll());
+		model.addAttribute("userPrincipal", authentication.getName());
 		return "liste-garagiste";
 
 	}
@@ -44,8 +56,7 @@ public class GaragisteController {
 		}
 
 		// Encryptage password
-//		String passwordEncrypted = Hashing.sha256().hashString(garagiste.getPassword(), StandardCharsets.UTF_8).toString();
-//		garagiste.setPassword(passwordEncrypted);
+		garagiste.setPassword(this.passwordEncoder.encode(garagiste.getPassword()));
 
 		// Ajout en BDD
 		this.srvGaragiste.add(garagiste);
@@ -70,6 +81,7 @@ public class GaragisteController {
 			return "form-garagiste";
 		}
 
+		garagiste.setPassword(this.passwordEncoder.encode(garagiste.getPassword()));
 		this.srvGaragiste.update(garagiste);
 
 		return "redirect:liste?garagisteModifie=true";
@@ -77,6 +89,13 @@ public class GaragisteController {
 
 	@GetMapping("/supprimer")
 	public String deleteById(@RequestParam int id) {
+		
+		Garagiste garagiste = this.srvGaragiste.findById(id);
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		
+		if (garagiste.getEmail().equals(authentication.getName())) {
+			return "redirect:liste?garagisteSupprime=false";
+		}
 
 		this.srvGaragiste.deleteById(id);
 		return "redirect:liste?garagisteSupprime=true";

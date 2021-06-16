@@ -23,7 +23,7 @@
 			</div>
 		</c:if>
 		
-		<a href="ajouter" class="btn btn-success">Ajouter un client</a>
+		<a href="client/ajouter" class="btn btn-success">Ajouter un client</a>
 		
 		<table class="table table-striped">
 			<thead>
@@ -48,11 +48,11 @@
 						<td>${ client.raisonSociale }</td>
 						<td>${ client.typeClient }</td>
 						<td>${ client.fidelite }</td>
-<%-- 						<td> <ahref="client-vehicules?id=${ client.id }" class="btn btn-warning">Voir</a> </td> --%>
+<!-- 						<td> <a href="client-vehicules?id=${ client.id }" class="btn btn-warning">Voir</a> </td> -->
 						<td>
 						
-							<a href="modifier?id=${ client.id }" class="btn btn-warning">Modifier</a>
-							<a href="supprimer?id=${ client.id }" class="btn btn-danger">Supprimer</a>
+							<a href="client/modifier?id=${ client.id }" class="btn btn-warning">Modifier</a>
+							<a href="client/supprimer?id=${ client.id }" class="btn btn-danger">Supprimer</a>
 						</td>
 					</tr>
 				</c:forEach>

@@ -20,7 +20,7 @@
 							<img class="img-fluid" src="/assets/img/igc.png" alt="IGC" />
 						</div>
 						<div class="card-body text-center form-parent">
-							<c:if test="${ erreur == true}">
+							<c:if test="${ param.erreur == true}">
 								<p style="color:red;">
 									Votre email et/ou votre mot de passe erroné(s)
 								</p>
