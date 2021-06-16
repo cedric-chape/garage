@@ -1,7 +1,10 @@
 package fr.garage.model;
 
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,6 +19,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 @Entity
 @Table(name = "commande")
 public class Commande {
@@ -24,10 +30,11 @@ public class Commande {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CMD_ID")
 	private int id;
-
+	
 	@Column(name = "CMD_DATE", nullable = false)
-	private LocalDateTime date = LocalDateTime.now();
-
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private LocalDateTime date;
+	
 	@Column(name = "CMD_ETAT", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private EtatCommande etatCommande = EtatCommande.NONCOMMENCEE;

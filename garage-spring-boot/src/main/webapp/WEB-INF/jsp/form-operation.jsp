@@ -33,8 +33,10 @@
 			<c:if test="${ operation != null && operation.id != 0 }">
 				<input type="submit" class="btn btn-warning" value="Modifier"/>
 			</c:if>
-			<a href="liste" class="btn btn-outline-primary">Retour</a>
+			<a href="operation/liste" class="btn btn-outline-primary">Retour</a>
 		</form:form>
+		
+		<div class="divHeight"></div>
 		
 	</jsp:body>
 </t:layout>

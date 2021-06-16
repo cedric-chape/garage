@@ -46,29 +46,8 @@
   			</div>
 		</div>
 		
-		<!--<form:form method="POST" modelAttribute="garagiste">
+		<div class="divHeight"></div>
 		
-			<div class="form-group">
-				<label>Nom</label>
-				<input type="text" name="nom" value="${ garagiste.nom }" class="form-control"/>
-			</div>
-			<div class="form-group">
-				<label>Prénom</label>
-				<input type="text" name="prenom" value="${ garagiste.prenom }" class="form-control"/>
-			</div>
-			<div class="form-group">
-				<label>Email</label>
-				<input type="text" name="email" value="${ garagiste.email }" class="form-control"/>
-			</div>
-			<div class="form-group">
-				<label>Password</label>
-				<input type="password" name="password" class="form-control"/>
-			</div>
-			
-			<div>
-			<a href="profil/modifier?id=${ garagiste.id }" class="btn btn-warning">Modifier mes informations</a>  
-			</div>
-		</form:form>-->
 	</jsp:body>
 	
 </t:layout>	

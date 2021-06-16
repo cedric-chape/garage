@@ -2,7 +2,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
 
 <t:layout>
-	<jsp:attribute name="title">Hello ${ garagiste.prenom } ${ garagiste.nom } !</jsp:attribute>
+	<jsp:attribute name="title">Une erreur est survenue, nos garagistes s'en occupent !</jsp:attribute>
 	
 	<jsp:body></jsp:body>
 </t:layout>

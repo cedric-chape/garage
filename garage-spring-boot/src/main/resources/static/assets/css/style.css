@@ -1,6 +1,25 @@
 body {
-	/*background-color: rgba(255,0,0,0.4);*/
 }
+
+body::before {
+      content: "";
+      background-image: url("/assets/img/background.jpg");
+      background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.75;
+}
+
+
+div ~ .rel {
+	background-color: white;
+	position: relative;
+	border-radius: 10px;
+}
+
 .form-parent {
    display: table;
    width: 100%;
@@ -12,4 +31,40 @@ body {
 .divHeight {
 	min-height: 5vh;
 	text-align: center;
+}
+
+nav {
+	border-bottom: 2px solid #dc3545;
+	background-color: white;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(220,53,69, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler.navbar-toggler {
+  border-color: #dc3545;
+}
+
+h1 {
+  position: relative;
+  color:#dc3545;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.navbar a {
+	color: #dc3545;
+}
+
+.navbar a:hover {
+	color: grey;
+}
+
+table {
+	margin-top: 30px;
+}
+
+span {
+	color: #dc3545;
 }

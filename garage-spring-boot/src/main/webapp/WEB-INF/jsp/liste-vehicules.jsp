@@ -2,7 +2,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
 
 <t:layout>
-	<jsp:attribute name="title">Liste des vehicules</jsp:attribute>
+	<jsp:attribute name="title">Liste des véhicules</jsp:attribute>
 	
 	<jsp:body>
 		<c:if test="${ param.vehiculeAjout == true }">
@@ -44,7 +44,6 @@
 					<th>Type client</th>
 					<th>Fidelité</th>
 					<th>Numéro client</th>
-					<th></th>
 				</tr>
 			</thead>
 			
@@ -64,12 +63,10 @@
 						<td><c:out value="${ vehicule.client.typeClient }" /></td>
 						<td><c:out value="${ vehicule.client.fidelite }" /></td>
 						<td><c:out value="${ vehicule.client.id }" /></td>
-						<td>
-							
-						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<div class="divHeight"></div>
 	</jsp:body>
 </t:layout>

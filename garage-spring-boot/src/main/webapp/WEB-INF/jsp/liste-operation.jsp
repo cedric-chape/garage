@@ -6,7 +6,6 @@
 	<jsp:attribute name="title">Liste des opérations</jsp:attribute>
 	
 	<jsp:body>
-		<br/>
 		<c:if test="${ param.operationAjoute == true }">
 			<div class="alert alert-success" role="alert">
 						Opération ajoutée !
@@ -22,8 +21,8 @@
 						Opération supprimée !
 			</div>
 		</c:if>
-		<br/>
-		<a href="operation/ajouter" class="btn btn-success">Ajouter</a> 
+		<a href="operation/ajouter" class="btn btn-success">Ajouter</a>
+
 		<table class="table table-striped">
 					<thead>
 			    <tr>
@@ -47,6 +46,7 @@
 			    </c:forEach>
 			</tbody>
 		</table>
+		<div class="divHeight"></div>
 	</jsp:body>
 	
 </t:layout>

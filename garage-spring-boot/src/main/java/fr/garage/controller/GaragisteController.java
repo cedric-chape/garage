@@ -3,6 +3,7 @@ package fr.garage.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,9 +28,7 @@ public class GaragisteController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	
-	
-
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/liste")
 	public String findAll(Model model) {
 		
@@ -41,12 +40,14 @@ public class GaragisteController {
 
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/ajouter")
 	public String add() {
 
 		return "form-garagiste";
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/ajouter")
 	public String add(@Valid Garagiste garagiste, BindingResult result, Model model) {
 
@@ -67,6 +68,7 @@ public class GaragisteController {
 		return "redirect:liste?garagisteAjoute=true";
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/modifier")
 	public String update(@RequestParam int id, Model model) {
 
@@ -74,6 +76,7 @@ public class GaragisteController {
 		return "form-garagiste";
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@PostMapping("/modifier")
 	public String update(@Valid Garagiste garagiste, BindingResult result, Model model) {
 
@@ -87,6 +90,7 @@ public class GaragisteController {
 		return "redirect:liste?garagisteModifie=true";
 	}
 
+	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping("/supprimer")
 	public String deleteById(@RequestParam int id) {
 		

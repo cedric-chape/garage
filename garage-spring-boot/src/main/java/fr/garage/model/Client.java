@@ -24,7 +24,7 @@ public class Client {
 	private int id;
 	
 	@Column(name="CLI_NOM", length = 40 , nullable = false)
-	@NotBlank
+	@NotBlank(message = "Le nom ne doit pas être vide")
 	@Size(max=40)
 	private String nom;
 	

@@ -33,6 +33,7 @@
 			</c:if>
 			<a href="monEspace?id=1" class="btn btn-outline-primary">Retour</a>
 		</form:form>
+		<div class="divHeight"></div>
 		
 	</jsp:body>
 </t:layout>

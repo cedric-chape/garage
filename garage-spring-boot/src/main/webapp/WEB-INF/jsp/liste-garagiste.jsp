@@ -6,7 +6,6 @@
 	<jsp:attribute name="title">Liste des garagistes</jsp:attribute>
 	
 	<jsp:body>
-		<br/>
 		<c:if test="${ param.garagisteAjoute == true }">
 			<div class="alert alert-success" role="alert">
 						Garagiste ajouté !
@@ -27,10 +26,11 @@
 						Vous ne pouvez pas vous supprimer !
 			</div>
 		</c:if>
-		<br/>
-		<a href="garagiste/ajouter" class="btn btn-success">Ajouter</a> 
+
+		<a href="garagiste/ajouter" class="btn btn-success">Ajouter</a>
+ 
 		<table class="table table-striped">
-					<thead>
+			<thead>
 			    <tr>
 			      <th scope="col">ID</th>
 			      <th scope="col">Nom</th>
@@ -39,7 +39,7 @@
 			      <th scope="col">Rôle</th>
 			      <th scope="col">Actions</th>
 			    </tr>
-					</thead>
+			</thead>
 			<tbody>
 				<c:forEach var="garagiste" items="${ garagistes }">
 			    	<tr>
@@ -66,6 +66,7 @@
 			    </c:forEach>
 			</tbody>
 		</table>
+		<div class="divHeight"></div>
 	</jsp:body>
 	
 </t:layout>

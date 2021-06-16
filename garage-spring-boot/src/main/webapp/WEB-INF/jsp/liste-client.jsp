@@ -23,19 +23,20 @@
 			</div>
 		</c:if>
 		
-		<a href="client/ajouter" class="btn btn-success">Ajouter un client</a>
-		
+		<div>
+			<a href="client/ajouter" class="btn btn-success">Ajouter un client</a>
+			<br/>
+		</div>
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>ID</th>
 					<th>Nom</th>
-					<th>Prenom</th>
-					<th>Raison Social</th>
+					<th>Prénom</th>
+					<th>Raison sociale</th>
 					<th>Type </th>
 					<th>Fidélité</th>
-					
-					<th></th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			
@@ -58,5 +59,6 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<div class="divHeight"></div>
 	</jsp:body>
 </t:layout>

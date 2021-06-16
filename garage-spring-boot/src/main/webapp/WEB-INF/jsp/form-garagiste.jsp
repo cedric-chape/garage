@@ -12,7 +12,7 @@
 		<form:form method="POST" modelAttribute="garagiste">
 			<form:errors path="*" cssClass="alert alert-danger" element="div" />
 			<div class="form-group">
-				<label>Nom <span style="color:red;">*</span></label>
+				<label>Nom <span>*</span></label>
 				<input type="text" name="nom" value="${ garagiste.nom }" class="form-control"/>
 			</div>
 			<div class="form-group">
@@ -49,6 +49,6 @@
 			</c:if>
 			<a href="liste" class="btn btn-outline-primary">Retour</a>
 		</form:form>
-		
+		<div class="divHeight"></div>
 	</jsp:body>
 </t:layout>
