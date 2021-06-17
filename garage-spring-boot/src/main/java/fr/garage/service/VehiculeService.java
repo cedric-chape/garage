@@ -42,4 +42,9 @@ public class VehiculeService {
 		}
 		this.dao.deleteById(id);
 	}
+
+	public List<Vehicule> findAllByClientId(int id) {
+		
+		return this.dao.findAllByClientId(id);
+	}
 }

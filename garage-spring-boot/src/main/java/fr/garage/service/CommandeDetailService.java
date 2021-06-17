@@ -1,5 +1,6 @@
 package fr.garage.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ public class CommandeDetailService {
 
 	@Autowired
 	private ICommandeDetailDao dao;
+	
+	public BigDecimal findPrixTotalCommandeDetail(int id) {
+		return this.dao.findPrixTotalCommandeDetail(id);
+	};
 
 	public List<CommandeDetail> findAll() {
 		return this.dao.findAll();

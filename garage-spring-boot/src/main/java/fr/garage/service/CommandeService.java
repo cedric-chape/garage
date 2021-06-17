@@ -9,6 +9,7 @@ import fr.garage.dao.ICommandeDao;
 import fr.garage.exception.CommandeNotFoundException;
 import fr.garage.exception.IdMustBePositiveException;
 import fr.garage.model.Commande;
+import fr.garage.model.EtatCommande;
 
 @Service
 public class CommandeService {
@@ -26,6 +27,10 @@ public class CommandeService {
 		}
 		
 		return this.dao.findById(id).orElseThrow(CommandeNotFoundException::new);
+	}
+	
+	public List<Commande> findAllByEtatCommande(EtatCommande etatCommande) {
+		return this.dao.findAllByEtatCommande(etatCommande);
 	}
 	
 	public void add(Commande commande) {

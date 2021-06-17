@@ -36,6 +36,7 @@
 					<th>Raison sociale</th>
 					<th>Type </th>
 					<th>Fidélité</th>
+					<th>Véhicules</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -49,9 +50,8 @@
 						<td>${ client.raisonSociale }</td>
 						<td>${ client.typeClient }</td>
 						<td>${ client.fidelite }</td>
-<!-- 						<td> <a href="client-vehicules?id=${ client.id }" class="btn btn-warning">Voir</a> </td> -->
+ 						<td><a href="client/vehicules?id=${ client.id }" class="btn btn-outline-success">Voir</a> </td>
 						<td>
-						
 							<a href="client/modifier?id=${ client.id }" class="btn btn-warning">Modifier</a>
 							<a href="client/supprimer?id=${ client.id }" class="btn btn-danger">Supprimer</a>
 						</td>

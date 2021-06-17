@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import fr.garage.model.Client;
 import fr.garage.service.ClientService;
+import fr.garage.service.VehiculeService;
 
 @Controller
 @RequestMapping("/client")
@@ -24,6 +25,9 @@ public class ClientController {
 	@Autowired
 	private ClientService srvClient;
 	
+	@Autowired
+	private VehiculeService srvVehicule;
+	
 	@GetMapping("/liste")
 	public String findAll(Model model) {
 		List<Client> mesClients = this.srvClient.findAll();
@@ -31,6 +35,14 @@ public class ClientController {
 		model.addAttribute("clients", mesClients);
 		
 		return "liste-client";
+	}
+	
+	@GetMapping("/vehicules")
+	public String findAllVehiculesByClient(@RequestParam int id, Model model) {
+		
+		model.addAttribute("vehicules", this.srvVehicule.findAllByClientId(id));
+		
+		return "vehicules-client";
 	}
 	
 	@GetMapping("/ajouter")

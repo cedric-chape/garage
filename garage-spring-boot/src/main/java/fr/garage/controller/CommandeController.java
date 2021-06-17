@@ -66,7 +66,6 @@ public class CommandeController {
 		this.srvCommande.add(commande);
 		return "redirect:liste?commandeAjout=true";
 	}
-	
 
 	@GetMapping("/modifier")
 	public String update(@RequestParam int id, Model model) {
@@ -77,7 +76,6 @@ public class CommandeController {
 		return "form-commande";
 	}
 	
-	
 	@PostMapping("/modifier")
 	public String update(@Valid Commande commande, BindingResult result, Model model) {
 		if (result.hasErrors()) {
@@ -86,6 +84,8 @@ public class CommandeController {
 			model.addAttribute("vehicules", this.srvVehicule.findAll());
 			return "form-commande";
 		}
+		
+		commande.setPrixTotal(new BigDecimal(0));
 		this.srvCommande.update(commande);
 		
 		return "redirect:liste?commandeModifie=true";
