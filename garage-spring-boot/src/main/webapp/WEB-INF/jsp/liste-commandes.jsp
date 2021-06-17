@@ -26,7 +26,7 @@
 			</div>
 		</c:if>
 		
-		<a href="ajouter" class="btn btn-success">Ajouter une commande</a>
+		<a href="commande/ajouter" class="btn btn-success">Ajouter une commande</a>
 		
 		<table class="table table-striped">
 			<thead>
@@ -36,13 +36,9 @@
 					<th>Etat</th>
 					<th>Prix total</th>
 					<th>Garagiste</th>
-					<th>Véhicule model</th>
-					<th>Véhicule marque</th>
-					<th>Nom du client</th>
-					<th>Prénom du client</th>
-					<th>Raison sociale</th>
-					<th>Numéro client</th>
-					<th></th>
+					<th>Véhicule</th>
+					<th>Client</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			
@@ -51,18 +47,19 @@
 					<tr>
 						<td>${ commande.getId() }</td>
 						<td>${ commande.date }</td>
-						<td>${ commande.etatCommande }</td>
+						<td>
+							<c:if test="${ commande.etatCommande  == NONCOMMENCEE }">Non commencée</c:if></td>
+							<c:if test="${ commande.etatCommande  == ENCOURS }">En cours</c:if></td>
+							<c:if test="${ commande.etatCommande  == TERMINEE }">Terminée</c:if></td>
 						<td>${ commande.prixTotal }</td>
-						<td>${ commande.garagiste.nom }</td>
-						<td>${ commande.vehicule.nom }</td>
-						<td>${ commande.vehicule.marque }</td>
-						<td>${ commande.client.nom }</td>
-						<td>${ commande.client.prenom }</td>
-						<td>${ commande.client.raisonSociale }</td>
-						<td>${ commande.client.id }</td>
-						<td><a href="commande-detail/detail?id=${ commande.id }" class="btn btn-warning">Détails</a></td>
-						<td><a href="modifier?id=${ commande.id }" class="btn btn-warning">Modifier</a></td>
-						<td><a href="supprimer?id=${ commande.id }" class="btn btn-danger">Supprimer</a></td>
+						<td>${ commande.garagiste.prenom } ${ commande.garagiste.nom }</td>
+						<td>${ commande.vehicule.marque } ${ commande.vehicule.nom }</td>
+						<td>${ commande.client.prenom } ${ commande.client.nom } ${ commande.client.raisonSociale }</td>
+						<td>
+							<a href="commande/commande-detail/detail?id=${ commande.id }" class="btn btn-warning">Détails</a>
+							<a href="commande/modifier?id=${ commande.id }" class="btn btn-warning">Modifier</a>
+							<a href="commande/supprimer?id=${ commande.id }" class="btn btn-danger">Supprimer</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

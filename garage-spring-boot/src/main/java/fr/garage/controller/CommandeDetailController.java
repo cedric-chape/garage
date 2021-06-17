@@ -49,7 +49,7 @@ public class CommandeDetailController {
 //		return "liste-commandeDetail";
 //	}
 	
-	@GetMapping("/detail")
+	@GetMapping("detail")
 	public String findAll(@RequestParam int id, Model model) {
 		List<CommandeDetail> mesCommandesDetails = this.srvCommandeDetail.findAll();
 		model.addAttribute("commandesDetails", mesCommandesDetails);
@@ -80,10 +80,12 @@ public class CommandeDetailController {
 		commandeDetail.setQuantite(quantite);
 		commandeDetail.setId(detailId);
 		commandeDetail.setPrixUnitaire(new BigDecimal(commandeDetail.getQuantite()).multiply(operation.getPrixUnitaire()));
-		commande.setPrixTotal(this.srvCommandeDetail.findPrixTotalCommandeDetail(commandeId));
-		
 		this.srvCommandeDetail.add(commandeDetail);
+		
+		// Mise à jour commande
+		commande.setPrixTotal(this.srvCommandeDetail.findPrixTotalCommandeDetail(commandeId));
 		this.srvCommande.update(commande);
+		
 		return "redirect:/commande/commande-detail/detail?id=" + commandeId;
 	}
 	

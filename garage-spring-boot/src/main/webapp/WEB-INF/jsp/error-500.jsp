@@ -2,7 +2,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
 
 <t:layout>
-	<jsp:attribute name="title">Erreur 500 ! Problème de moteur, nos garagistes sont dessus !</jsp:attribute>
+	<jsp:attribute name="title">Erreur 500 ! Problème de moteur, nos garagistes IT sont dessus !</jsp:attribute>
 	
 	<jsp:body></jsp:body>
 </t:layout>
