@@ -89,10 +89,87 @@ public class CommandeDetailController {
 		return "redirect:/commande/commande-detail/detail?id=" + commandeId;
 	}
 	
-//	@GetMapping("detail/{id}/supprimer")
-//	public String deleteById(@RequestParam int id) {
-//		this.srvOperation.deleteById(id);
-//		
-//		return "redirect:liste?operationSupprime=true";
-//	}
+	@GetMapping( "detail/{commandeId}/modifier")
+	public String modifier(Model model, @PathVariable int commandeId, @RequestParam int operationId) {
+		model.addAttribute("operations", this.srvOperation.findAll());
+		model.addAttribute("commandeId", commandeId);
+		model.addAttribute("operationId", operationId);
+		
+		CommandeDetailId cmdeId = new CommandeDetailId();
+		Commande cmd = new Commande();
+		cmd.setId(commandeId);
+		cmdeId.setCommande(cmd);
+		
+		Operation ope = new Operation();
+		ope.setId(operationId);
+		cmdeId.setOperation(ope);
+		
+		model.addAttribute("commandeDetail", this.srvCommandeDetail.findById(cmdeId));
+		
+		return "form-detail";
+	}
+	
+	@PostMapping("detail/{id}/modifier")
+	public String modifier(
+			@RequestParam int quantite, 
+			@RequestParam int commandeId, 
+			@RequestParam int operationId, 
+			@RequestParam int oldOperationId, 
+			@PathVariable int id, 
+			Model model) {
+		
+		// On crée une nouvelle commande detail
+		CommandeDetailId newDetailId = new CommandeDetailId();
+		newDetailId.setCommande(new Commande());
+		newDetailId.setOperation(new Operation());
+		
+		newDetailId.getCommande().setId(commandeId);
+		newDetailId.getOperation().setId(operationId);
+
+		CommandeDetail commandeDetail = new CommandeDetail();
+		
+		//On sette CommandeDetail
+		commandeDetail.setQuantite(quantite);
+		commandeDetail.setId(newDetailId);
+		Operation operation = this.srvOperation.findById(operationId);
+		commandeDetail.setPrixUnitaire(new BigDecimal(commandeDetail.getQuantite()).multiply(operation.getPrixUnitaire()));
+		
+		//On ajoute CommandeDetail
+		this.srvCommandeDetail.add(commandeDetail);
+		
+		//On supprime l'ancienne commande detail
+		CommandeDetailId oldDetailId = new CommandeDetailId();
+		oldDetailId.setCommande(new Commande());
+		oldDetailId.setOperation(new Operation());
+		
+		oldDetailId.getCommande().setId(commandeId);
+		oldDetailId.getOperation().setId(oldOperationId);
+		
+		this.srvCommandeDetail.deleteById(oldDetailId);
+		
+		// Mise à jour commande
+		Commande commande = this.srvCommande.findById(commandeId);
+		commande.setPrixTotal(this.srvCommandeDetail.findPrixTotalCommandeDetail(commandeId));
+		this.srvCommande.update(commande);
+
+		
+		return "redirect:/commande/commande-detail/detail?id=" + id;
+	}
+	
+	@GetMapping("detail/{commandeId}/supprimer")
+	public String deleteById(@PathVariable int commandeId, @RequestParam int operationId ) {
+		CommandeDetailId cmdeId = new CommandeDetailId();
+		
+		Commande commande = new Commande();
+		commande.setId(commandeId);
+		cmdeId.setCommande(commande);
+		
+		Operation operation = new Operation();
+		operation.setId(operationId);
+		cmdeId.setOperation(operation);
+		
+		this.srvCommandeDetail.deleteById(cmdeId);
+		
+		return "redirect:/commande/commande-detail/detail?id=" + commandeId;
+	}
 }

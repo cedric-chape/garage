@@ -47,8 +47,8 @@
 						<td>${ commandeDetail.id.operation.prixUnitaire }</td>
 						<td>${ commandeDetail.id.operation.prixUnitaire *  commandeDetail.quantite }</td>
 						<td>
-							<a href="modifier?id=${ commande.id }" class="btn btn-warning">Modifier</a>
-							<a href="supprimer?id=${ commande.id }" class="btn btn-danger">Supprimer</a>
+							<!-- <a href="commande/commande-detail/detail/${ commande.id }/modifier?operationId=${ commandeDetail.id.operation.id }" class="btn btn-warning">Modifier</a>-->
+							<a href="commande/commande-detail/detail/${ commande.id }/supprimer?operationId=${ commandeDetail.id.operation.id }" class="btn btn-danger">Supprimer</a>
 						</td>
 					</tr>
 				</c:forEach>

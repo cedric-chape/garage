@@ -34,7 +34,13 @@ public class CommandeDetailService {
 	}
 
 	public void add(CommandeDetail commandeDetail) {
+		
+		try {
 		this.dao.save(commandeDetail);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void update(CommandeDetail commandeDetail) {
