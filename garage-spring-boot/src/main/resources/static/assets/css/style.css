@@ -53,6 +53,10 @@ h1 {
   padding-bottom: 30px;
 }
 
+h2 {
+	font-family: 'Monoton', cursive;
+}
+
 .navbar a {
 	color: #dc3545;
 }
@@ -67,4 +71,9 @@ table {
 
 span {
 	color: #dc3545;
+}
+
+.card .card-header {
+	background-color: white;
+	font-size: bold;
 }
