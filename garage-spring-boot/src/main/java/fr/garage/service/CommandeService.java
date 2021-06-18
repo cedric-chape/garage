@@ -29,8 +29,8 @@ public class CommandeService {
 		return this.dao.findById(id).orElseThrow(CommandeNotFoundException::new);
 	}
 	
-	public List<Commande> findAllByEtatCommande(EtatCommande etatCommande) {
-		return this.dao.findAllByEtatCommande(etatCommande);
+	public List<Commande> findAllByEtatCommandeAndGaragisteId(EtatCommande etatCommande, int garagisteId) {
+		return this.dao.findAllByEtatCommandeAndGaragisteId(etatCommande, garagisteId);
 	}
 	
 	public void add(Commande commande) {

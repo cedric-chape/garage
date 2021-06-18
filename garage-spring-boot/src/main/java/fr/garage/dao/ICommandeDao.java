@@ -9,7 +9,7 @@ import fr.garage.model.EtatCommande;
 
 public interface ICommandeDao extends JpaRepository<Commande, Integer>{
 	
-	public List<Commande> findAllByEtatCommande(EtatCommande etatCommande);
+	public List<Commande> findAllByEtatCommandeAndGaragisteId(EtatCommande etatCommande, int garagisteId);
 	
 
 }

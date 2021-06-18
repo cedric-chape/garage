@@ -14,4 +14,6 @@ public interface ICommandeDetailDao extends JpaRepository<CommandeDetail, Comman
 
 	@Query( value = "select sum(cmde_prix_unitaire) from commande_detail where cmde_commande_id = ?1", nativeQuery = true)
 	public BigDecimal findPrixTotalCommandeDetail(int id);
+
+	public List<CommandeDetail> findAllByIdCommandeId(int id);
 }

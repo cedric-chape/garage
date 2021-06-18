@@ -53,4 +53,9 @@ public class CommandeDetailService {
 		}*/
 		this.dao.deleteById(id);
 	}
+
+	public List<CommandeDetail> findAllByIdCommandeId(int id) {
+		
+		return this.dao.findAllByIdCommandeId(id);
+	}
 }

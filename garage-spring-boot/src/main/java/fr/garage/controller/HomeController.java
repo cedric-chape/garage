@@ -32,10 +32,10 @@ public class HomeController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Garagiste garagiste = this.srvGaragiste.findByEmail(authentication.getName());
 		
-		List<Commande> commandesEnCours = this.srvCommande.findAllByEtatCommande(EtatCommande.ENCOURS);
+		List<Commande> commandesEnCours = this.srvCommande.findAllByEtatCommandeAndGaragisteId(EtatCommande.ENCOURS, garagiste.getId());
 		
 		model.addAttribute("garagiste", garagiste);
-		model.addAttribute("commandesEnCours", this.srvCommande.findAllByEtatCommande(EtatCommande.ENCOURS));
+		model.addAttribute("commandesEnCours", commandesEnCours);
 		
 		for (Commande c : commandesEnCours)
 			System.out.println(c.getId());

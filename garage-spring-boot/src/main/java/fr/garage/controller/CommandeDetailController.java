@@ -51,7 +51,7 @@ public class CommandeDetailController {
 	
 	@GetMapping("detail")
 	public String findAll(@RequestParam int id, Model model) {
-		List<CommandeDetail> mesCommandesDetails = this.srvCommandeDetail.findAll();
+		List<CommandeDetail> mesCommandesDetails = this.srvCommandeDetail.findAllByIdCommandeId(id);
 		model.addAttribute("commandesDetails", mesCommandesDetails);
 		model.addAttribute("commande", this.srvCommande.findById(id));
 		return "liste-commandeDetail";
